@@ -154,6 +154,116 @@
     gap: 2px;
   }
 
+  /* Contact page refinements */
+  .contact-us {
+    padding: 72px 0 100px;
+  }
+
+  .contact-us .contact {
+    align-items: stretch;
+    margin-top: 22px;
+    gap: 28px;
+  }
+
+  .contact-us .first-part,
+  .contact-us .second-part {
+    padding: 34px;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+  }
+
+  .contact-us .first-part {
+    width: 52%;
+  }
+
+  .contact-us .second-part {
+    flex: 1;
+  }
+
+  .contact-us form {
+    max-width: none !important;
+  }
+
+  .contact-us label {
+    color: var(--ink) !important;
+    font-weight: 700;
+  }
+
+  .contact-us input,
+  .contact-us textarea {
+    border: 1px solid var(--line) !important;
+    border-radius: 12px !important;
+    background: var(--soft) !important;
+    color: var(--ink) !important;
+    outline: none;
+  }
+
+  .contact-us input:focus,
+  .contact-us textarea:focus {
+    border-color: var(--brand) !important;
+    box-shadow: 0 0 0 4px rgba(244, 185, 66, .18);
+  }
+
+  .contact-us .contact .second-part .content-contact h2 {
+    color: var(--ink);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    letter-spacing: -.04em;
+  }
+
+  .contact-us .contact .second-part .content-contact p,
+  .company-p p {
+    color: var(--muted);
+  }
+
+  .contact-us .contact .second-part .company-whole {
+    gap: 20px;
+  }
+
+  .contact-us .company-icon {
+    border: 0 !important;
+    background: var(--ink) !important;
+    border-radius: 14px !important;
+  }
+
+  .company-p h2,
+  .working-hour h3 {
+    color: var(--ink);
+  }
+
+  .contact-us .one-row {
+    gap: 22px;
+    padding-top: 10px;
+    border-bottom: 0;
+  }
+
+  .one-row-hrs {
+    padding: 0;
+    color: var(--muted);
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  @media (max-width: 1000px) {
+    .contact-us .first-part {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .contact-us {
+      padding: 52px 0 70px;
+    }
+    .contact-us .first-part,
+    .contact-us .second-part {
+      padding: 22px;
+    }
+    .contact-us .one-row {
+      flex-direction: column;
+    }
+  }
+
   .max-w-sm {
     max-width: 20rem !important;
   }

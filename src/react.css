@@ -1,0 +1,123 @@
+.whatsapp-kicker { margin-top: 30px; }
+.form-status { display: block; margin-top: 8px; color: var(--green); }
+
+@media (max-width: 760px) {
+    .utility-inner {
+        min-height: 34px;
+    }
+
+    .utility-links {
+        width: 100%;
+        justify-content: center;
+        gap: 12px;
+        font-size: .68rem;
+    }
+
+    .utility-links a {
+        white-space: nowrap;
+    }
+
+    .utility-links a:nth-child(2),
+    .utility-links a:nth-child(3) {
+        display: none;
+    }
+
+    .main-nav {
+        position: relative;
+        min-height: 72px;
+    }
+
+    .brand-mark,
+    .brand-mark img {
+        width: 62px;
+        height: 62px;
+    }
+
+    .brand-mark {
+        flex-basis: 62px;
+    }
+
+    .brand strong {
+        font-size: 1rem;
+    }
+
+    .nav-menu,
+    .nav-menu.is-open {
+        position: absolute;
+        top: calc(100% + 1px);
+        right: 0;
+        left: 0;
+        display: none;
+        grid-template-columns: 1fr;
+        gap: 2px;
+        width: 100%;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 0 0 14px 14px;
+        background: var(--paper);
+        box-shadow: var(--shadow);
+    }
+
+    .nav-menu.is-open {
+        display: grid;
+    }
+
+    .nav-menu > a,
+    .nav-products > button {
+        width: 100%;
+        min-height: 44px;
+        padding: 10px 12px;
+        text-align: left;
+    }
+
+    .nav-products {
+        display: block;
+    }
+
+    .nav-products > button {
+        justify-content: space-between;
+    }
+
+    .products-dropdown {
+        position: static;
+        display: grid;
+        min-width: 0;
+        gap: 2px;
+        padding: 0 0 4px 12px;
+        border: 0;
+        box-shadow: none;
+        transform: none;
+    }
+
+    .products-dropdown a {
+        min-height: 40px;
+        padding: 10px 12px;
+    }
+
+    .nav-cta {
+        justify-content: center;
+        margin-top: 4px;
+    }
+}
+
+@media (max-width: 420px) {
+    .container {
+        width: calc(100% - 28px);
+    }
+
+    .main-nav {
+        gap: 12px;
+    }
+
+    .utility-links {
+        font-size: .62rem;
+    }
+
+    .brand {
+        gap: 7px;
+    }
+
+    .brand small {
+        font-size: .45rem;
+    }
+}
