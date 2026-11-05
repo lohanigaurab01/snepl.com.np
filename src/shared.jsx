@@ -8,6 +8,7 @@ const productLinks = [
 
 function Header({ active = "" }) {
   const [open, setOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
   const nav = [
     ["/", "Home"],
     ["/about", "About us"],
@@ -65,11 +66,16 @@ function Header({ active = "" }) {
               {label}
             </a>
           ))}
-          <div className="nav-products">
-            <button type="button">
+          <div className={`nav-products ${productsOpen ? "is-open" : ""}`}>
+            <button
+              type="button"
+              aria-expanded={productsOpen}
+              aria-controls="products-dropdown"
+              onClick={() => setProductsOpen(!productsOpen)}
+            >
               Products <i className="bi bi-chevron-down" />
             </button>
-            <div className="products-dropdown">
+            <div className="products-dropdown" id="products-dropdown">
               {productLinks.map(([href, label]) => (
                 <a href={href} key={href}>
                   {label}

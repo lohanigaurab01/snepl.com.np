@@ -7,6 +7,7 @@ import { About } from "./pages/About.jsx";
 import { Team } from "./pages/Team.jsx";
 import { Contact } from "./pages/Contact.jsx";
 import { SolarPage, FloodLight, Appliances } from "./pages/Products.jsx";
+import { NotFound } from "./pages/NotFound.jsx";
 
 function App() {
   const path = window.location.pathname.replace(/\/$/, "") || "/";
@@ -17,7 +18,8 @@ function App() {
   if (path === "/flood-light") return <FloodLight />;
   if (path === "/home-appliance" || path === "/home-applicance")
     return <Appliances />;
-  return <Home />;
+  if (path === "/") return <Home />;
+  return <NotFound />;
 }
 
 createRoot(document.getElementById("root")).render(<App />);

@@ -1,5 +1,11 @@
 .whatsapp-kicker { margin-top: 30px; }
 .form-status { display: block; margin-top: 8px; color: var(--green); }
+.not-found { min-height: 420px; }
+.not-found-card { max-width: 620px; padding: 48px; border-radius: 22px; background: var(--paper); box-shadow: var(--shadow); }
+.not-found-number { display: block; color: var(--green); font: 800 clamp(4rem, 12vw, 8rem)/.8 Manrope, sans-serif; letter-spacing: -.08em; }
+.not-found-card h2 { margin: 30px 0 16px; font-size: clamp(2.4rem, 5vw, 4rem); }
+.not-found-card h2 span { color: var(--green); }
+.not-found-card p { max-width: 420px; margin-bottom: 28px; color: var(--muted); }
 
 @media (max-width: 760px) {
     .utility-inner {
@@ -9,17 +15,14 @@
     .utility-links {
         width: 100%;
         justify-content: center;
-        flex-wrap: wrap;
-        gap: 4px 12px;
+        flex-direction: column;
+        gap: 2px;
+        padding: 6px 0;
         font-size: .68rem;
     }
 
     .utility-links a {
         white-space: nowrap;
-    }
-
-    .utility-links a:nth-child(3) {
-        display: none;
     }
 
     .main-nav {
@@ -80,13 +83,16 @@
 
     .products-dropdown {
         position: static;
-        display: grid;
         min-width: 0;
         gap: 2px;
         padding: 0 0 4px 12px;
         border: 0;
         box-shadow: none;
         transform: none;
+    }
+
+    .nav-products.is-open .products-dropdown {
+        display: grid;
     }
 
     .products-dropdown a {
@@ -110,7 +116,7 @@
     }
 
     .utility-links {
-        gap: 3px 8px;
+        gap: 2px;
         font-size: .6rem;
     }
 
@@ -120,5 +126,9 @@
 
     .brand small {
         font-size: .45rem;
+    }
+
+    .not-found-card {
+        padding: 30px 24px;
     }
 }
