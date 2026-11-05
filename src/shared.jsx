@@ -1,10 +1,83 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 const WA = "https://wa.me/9779857070242";
 const productLinks = [
   ["/solar-street-light", "Solar street lights"],
   ["/flood-light", "Flood lights"],
   ["/home-appliance", "Home appliances"],
 ];
+
+const pageSeo = {
+  "/": {
+    title: "Sambridha Nepal Energy | Solar lighting and energy solutions",
+    description:
+      "Sambridha Nepal Energy provides solar street lights, LED flood lights, home appliances and practical energy solutions across Nepal.",
+  },
+  "/about": {
+    title: "About Sambridha Nepal Energy | Practical energy solutions",
+    description:
+      "Learn how Sambridha Nepal Energy delivers dependable lighting, appliance and energy solutions with thoughtful local support.",
+  },
+  "/contact": {
+    title: "Contact Sambridha Nepal Energy | Talk to our team",
+    description:
+      "Contact Sambridha Nepal Energy for solar street lights, LED flood lights, home appliances and energy solutions in Nepal.",
+  },
+  "/team": {
+    title: "Our Team | Sambridha Nepal Energy",
+    description:
+      "Meet the Sambridha Nepal Energy team providing practical energy products, installation and customer support.",
+  },
+  "/solar-street-light": {
+    title: "Solar Street Lights in Nepal | Sambridha Nepal Energy",
+    description:
+      "Explore efficient, weather-ready solar street lights for roads, compounds and communities across Nepal.",
+  },
+  "/flood-light": {
+    title: "LED Flood Lights in Nepal | Sambridha Nepal Energy",
+    description:
+      "Discover high-output, weather-resistant LED flood lights for outdoor, commercial and public spaces in Nepal.",
+  },
+  "/home-appliance": {
+    title: "Home Appliances in Nepal | Sambridha Nepal Energy",
+    description:
+      "Explore practical induction stoves, water dispensers and electric kettles from Sambridha Nepal Energy.",
+  },
+};
+const notFoundSeo = {
+  title: "Page not found | Sambridha Nepal Energy",
+  description: "The requested Sambridha Nepal Energy page could not be found.",
+};
+
+function PageSeo() {
+  const path = window.location.pathname.replace(/\/$/, "") || "/";
+  const seo = pageSeo[path] || notFoundSeo;
+
+  useEffect(() => {
+    const url = `https://snepl.com.np${path === "/" ? "/" : path}`;
+    document.title = seo.title;
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute("content", seo.description);
+    document.querySelector('link[rel="canonical"]')?.setAttribute("href", url);
+    document
+      .querySelector('meta[property="og:title"]')
+      ?.setAttribute("content", seo.title);
+    document
+      .querySelector('meta[property="og:description"]')
+      ?.setAttribute("content", seo.description);
+    document
+      .querySelector('meta[property="og:url"]')
+      ?.setAttribute("content", url);
+    document
+      .querySelector('meta[name="twitter:title"]')
+      ?.setAttribute("content", seo.title);
+    document
+      .querySelector('meta[name="twitter:description"]')
+      ?.setAttribute("content", seo.description);
+  }, [path, seo]);
+
+  return null;
+}
 
 function Header({ active = "" }) {
   const [open, setOpen] = useState(false);
@@ -151,6 +224,7 @@ function Footer() {
 function Layout({ active, children }) {
   return (
     <>
+      <PageSeo />
       <Header active={active} />
       {children}
       <Footer />
