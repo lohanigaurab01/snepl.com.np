@@ -9,7 +9,8 @@
     .utility-links {
         width: 100%;
         justify-content: center;
-        gap: 12px;
+        flex-wrap: wrap;
+        gap: 4px 12px;
         font-size: .68rem;
     }
 
@@ -17,7 +18,6 @@
         white-space: nowrap;
     }
 
-    .utility-links a:nth-child(2),
     .utility-links a:nth-child(3) {
         display: none;
     }
@@ -110,7 +110,8 @@
     }
 
     .utility-links {
-        font-size: .62rem;
+        gap: 3px 8px;
+        font-size: .6rem;
     }
 
     .brand {
