@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { WA, Layout, Hero } from "../shared.jsx";
 
+
+
 function Contact() {
   const [sent, setSent] = useState(false);
   const [result, setResult] = useState("");
@@ -146,11 +148,16 @@ function Contact() {
               <a href="mailto:info@snepl.com.np">info@snepl.com.np</a>
               <a href="mailto:snepl.2015@gmail.com">snepl.2015@gmail.com</a>
             </ContactDetail>
+            <ContactDetail icon="geo-alt-fill" label="Location">
+              <span>Bharatpur, Nepal</span>
+    
+            </ContactDetail>
             <ContactDetail icon="clock-fill" label="Working hours">
               <span>Mon – Fri: 10:00 AM – 5:00 PM</span>
             </ContactDetail>
           </aside>
         </section>
+   
       </main>
     </Layout>
   );
