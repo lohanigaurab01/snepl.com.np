@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 import "../css/style.css";
 import "./react.css";
@@ -10,7 +10,56 @@ import { SolarPage, FloodLight, Appliances } from "./pages/Products.jsx";
 import { NotFound } from "./pages/NotFound.jsx";
 
 function App() {
-  const path = window.location.pathname.replace(/\/$/, "") || "/";
+  const [path, setPath] = useState(
+    window.location.pathname.replace(/\/$/, "") || "/",
+  );
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setPath(window.location.pathname.replace(/\/$/, "") || "/");
+    };
+
+    const handleClick = (event) => {
+      if (
+        event.defaultPrevented ||
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey
+      ) {
+        return;
+      }
+
+      const target = event.target;
+      const link = target instanceof Element ? target.closest("a") : null;
+      if (!link || link.target === "_blank") return;
+
+      const href = link.getAttribute("href");
+      if (!href || (!href.startsWith("/") && !href.startsWith("#"))) return;
+
+      event.preventDefault();
+      window.history.pushState({}, "", href);
+      setPath(window.location.pathname.replace(/\/$/, "") || "/");
+
+      window.requestAnimationFrame(() => {
+        const hash = window.location.hash.slice(1);
+        if (hash) {
+          document.getElementById(decodeURIComponent(hash))?.scrollIntoView();
+        } else {
+          window.scrollTo(0, 0);
+        }
+      });
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    document.addEventListener("click", handleClick);
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+      document.removeEventListener("click", handleClick);
+    };
+  }, []);
+
   if (path === "/about") return <About />;
   if (path === "/team") return <Team />;
   if (path === "/contact") return <Contact />;

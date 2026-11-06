@@ -3,13 +3,37 @@ import { WA, Layout, Hero } from "../shared.jsx";
 
 function Contact() {
   const [sent, setSent] = useState(false);
+  const [result, setResult] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const sendEmail = (event) => {
+  const sendEmail = async (event) => {
     event.preventDefault();
-    const body = Array.from(new FormData(event.currentTarget).entries())
-      .map(([key, value]) => `${key}: ${value}`)
-      .join("\n");
-    window.location.href = `mailto:info@snepl.com.np?subject=Website enquiry&body=${encodeURIComponent(body)}`;
+    setIsSubmitting(true);
+    setResult("");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    formData.append("access_key", "95814b00-9b86-409d-a868-a9f531314f73");
+    formData.append("subject", "New website enquiry");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error("Unable to send enquiry");
+      }
+
+      setResult("Thanks, your message has been sent.");
+      form.reset();
+    } catch {
+      setResult("Something went wrong. Please try again or contact us directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const sendWhatsApp = (event) => {
@@ -73,9 +97,17 @@ function Contact() {
                 placeholder="Tell us about your project..."
                 required
               />
-              <button className="button button-dark" type="submit">
-                Send enquiry <i className="bi bi-arrow-up-right" />
+              <button
+                className="button button-dark"
+                type="submit"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending..." : "Send enquiry"} 
+                {!isSubmitting && <i className="bi bi-arrow-up-right" />}
               </button>
+              <p role="status" aria-live="polite">
+                {result}
+              </p>
             </form>
           </div>
 
