@@ -27,6 +27,10 @@
     />
     <meta property="og:url" content="https://snepl.com.np/" />
     <meta
+      property="og:image:alt"
+      content="Sambridha Nepal Energy solar street light"
+    />
+    <meta
       property="og:image"
       content="https://snepl.com.np/img/solar-street-light-qjotvolve1lawdbwmhkse6jayp17irmeloai5mf5bg.jpg"
     />
@@ -43,6 +47,10 @@
       name="twitter:image"
       content="https://snepl.com.np/img/solar-street-light-qjotvolve1lawdbwmhkse6jayp17irmeloai5mf5bg.jpg"
     />
+    <meta
+      name="twitter:image:alt"
+      content="Sambridha Nepal Energy solar street light"
+    />
     <link rel="icon" href="/favicon.jpg" type="image/jpeg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -58,14 +66,35 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Sambridha Nepal Energy PVT Ltd.",
-        "alternateName": "Sambridha Nepal",
-        "url": "https://snepl.com.np/",
-        "logo": "https://snepl.com.np/favicon.jpg",
-        "email": ["mailto:info@snepl.com.np", "mailto:snepl.2015@gmail.com"],
-        "telephone": "+9779857070242",
-        "sameAs": ["https://www.facebook.com/sambridha.nepal.56"]
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://snepl.com.np/#organization",
+            "name": "Sambridha Nepal Energy",
+            "legalName": "Sambridha Nepal Energy PVT Ltd.",
+            "alternateName": "Sambridha Nepal",
+            "url": "https://snepl.com.np/",
+            "logo": "https://snepl.com.np/favicon.jpg",
+            "description": "Sambridha Nepal Energy provides solar lighting, LED flood lights, home appliances and practical energy solutions across Nepal.",
+            "areaServed": {
+              "@type": "Country",
+              "name": "Nepal"
+            },
+            "email": ["mailto:info@snepl.com.np", "mailto:snepl.2015@gmail.com"],
+            "telephone": "+9779857070242",
+            "sameAs": ["https://www.facebook.com/sambridha.nepal.56"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://snepl.com.np/#website",
+            "url": "https://snepl.com.np/",
+            "name": "Sambridha Nepal Energy",
+            "publisher": {
+              "@id": "https://snepl.com.np/#organization"
+            },
+            "inLanguage": "en"
+          }
+        ]
       }
     </script>
   </head>
