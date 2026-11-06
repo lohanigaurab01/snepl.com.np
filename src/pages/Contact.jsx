@@ -6,6 +6,13 @@ function Contact() {
   const [result, setResult] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const handlePhoneInput = (event) => {
+    const input = event.currentTarget;
+    input.value = input.value
+      .replace(/[^\d+\s-]/g, "")
+      .replace(/(?!^)\+/g, "");
+  };
+
   const sendEmail = async (event) => {
     event.preventDefault();
     setIsSubmitting(true);
@@ -79,6 +86,11 @@ function Contact() {
                 name="phone"
                 type="tel"
                 placeholder="+977 98..."
+                inputMode="tel"
+                autoComplete="tel"
+                pattern="(?:\+977[-\s]?)?9[678]\d{8}"
+                title="Enter a valid Nepali mobile number, for example +977 9857070242"
+                onInput={handlePhoneInput}
                 required
               />
               <label htmlFor="email">Email address</label>
