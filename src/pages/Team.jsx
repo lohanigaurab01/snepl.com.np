@@ -32,8 +32,7 @@ function Team() {
               role="Founder & lead"
               name="Binod Tiwari"
             />
-            <TeamCard role="Operations" name="Pabitra Panta" sun />
-            <TeamCard role="Our approach" name="People first" green />
+            <TeamCard image="/img/pabitra.png" role="Operations" name="Pabitra Panta" sun />
           </div>
         </section>
         <Banner />
@@ -49,7 +48,9 @@ function TeamCard({ image, role, name, sun, green }) {
     >
       <div className="team-card-media">
         {image ? (
-          <img src={image} alt={name} />
+          <div className="team-image-frame">
+            <img src={image} alt={name} />
+          </div>
         ) : (
           <div className="team-placeholder">
             <i
